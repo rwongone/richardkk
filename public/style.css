@@ -98,24 +98,29 @@ html
 body
 {
 	background-color: #FCE7AC;
-	z-index: 1;
-	min-height:0;
+	height: 80%;
+	min-height:80%;
 }
 
 #background 
 {
 	position: fixed;
 	top: 0px;
-	right: 0px;
+	left: 0px;
 	width: 50%;
-	min-height: 0;
+	min-height: 100%;
 	background-color: #F9AF9E;
 	z-index: -1;
 }
 
+#blockA
+{
+	position: fixed;
+}
+
 div.logo
 {
-	background-color: #E3756D;
+	background-color: inherit;
 	margin-left: auto;
 	margin-right: auto;
 	height: 5em; /* originally 5em */
@@ -129,13 +134,7 @@ div.logo img
 	-webkit-border-radius: 1em;
 	-moz-border-radius: 1em;
 	border-radius: 1em;
-	-moz-transition:opacity 0.2s ease-in-out; -ms-transition:opacity 0.2s ease-in-out; -o-transition:opacity 0.2s ease-in-out; -webkit-transition:opacity 0.2s ease-in-out; transition:opacity 0.2s ease-in-out;
-}
-
-div.logo img:hover
-{
-	opacity: 0.6;
-	filter: alpha(opacity=60);
+	visibility: hidden;
 }
 
 div.social
@@ -153,6 +152,14 @@ div.social img
 {
 	width: 2.2em;
 	height: 2em;
+	margin-left: 0.5em;
+	-moz-transition:opacity 0.2s ease-in-out; -ms-transition:opacity 0.2s ease-in-out; -o-transition:opacity 0.2s ease-in-out; -webkit-transition:opacity 0.2s ease-in-out; transition:opacity 0.2s ease-in-out;
+}
+
+div.social img:hover
+{
+	opacity: 0.6;
+	filter: alpha(opacity=60);
 }
 
 header
@@ -176,6 +183,10 @@ nav
 	top:0;
 	width:100%;
 	padding: 0 30em;
+   	-webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	z-index: 1;
 }
 
 nav ul
@@ -208,6 +219,9 @@ div.page_content
 	margin-left:25%;
 	padding-top: 1em;
 	min-height: 100%;
+   	-webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 2px 0px rgba(50, 50, 50, 0.75);
 }
 
 div.page_content p
@@ -237,7 +251,11 @@ footer p
 
 article
 {
+	background: rgba(211, 218, 237);
 	background: rgba(211, 218, 237, 0.7);
 	margin: 1em -10em 1em 2em;
 	padding-right: 12em;
+	-webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 2px 0px rgba(50, 50, 50, 0.75);
 }
