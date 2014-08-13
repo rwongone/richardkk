@@ -57,7 +57,7 @@ ul
 	/* Rendering */
 	body,
 	input,
-	textarea 						{ color:#333; } 
+	textarea 						{ color:#000; } 
 
 	/* Families */
 	body							{ font-family:"tablet-gothic", verdana, arial, sans-serif; /* Weights from Typekit: 300, 400 */ }
@@ -98,13 +98,19 @@ html
 body
 {
 	background-color: #FCE7AC;
-	background: -webkit-linear-gradient(left, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* Standard syntax */
 	z-index: 1;
-	height:100%;
-	min-height:100%;
+	min-height:0;
+}
+
+#background 
+{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 50%;
+	min-height: 0;
+	background-color: #F9AF9E;
+	z-index: -1;
 }
 
 div.logo
@@ -141,15 +147,12 @@ div.social
 	right:0;
 	margin-top: 1em;
 	margin-right: 2em;
-	width: 1.5em;
-	height: 1.5em;
 }
 
 div.social img
 {
-	-webkit-border-radius: 1em;
-	-moz-border-radius: 1em;
-	border-radius: 1em;
+	width: 2.2em;
+	height: 2em;
 }
 
 header
@@ -203,8 +206,8 @@ div.page_content
 	background-color:#ACC1FC;
 	width:50%;
 	margin-left:25%;
+	padding-top: 1em;
 	min-height: 100%;
-	margin-bottom:2.5em;
 }
 
 div.page_content p
@@ -220,7 +223,7 @@ footer
 	height:5em;
 	background-color:#2E3C5C;
 	text-align:right;
-	z-index: -1;
+	z-index: 0;
 }
 
 footer p
@@ -230,4 +233,11 @@ footer p
 	right: 0;
 	margin-right:7em;
 	color:#CCC;
+}
+
+article
+{
+	background: rgba(211, 218, 237, 0.7);
+	margin: 1em -10em 1em 2em;
+	padding-right: 12em;
 }
