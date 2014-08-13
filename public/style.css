@@ -73,11 +73,12 @@ ul
 	h6 								{ font-weight:normal; }
 	h1 								{ background:#CC99FF; color:#fff; display:inline-block; margin-bottom:1em; padding:0.5em 1em; }
 	h2 								{ color:#fff; font-weight:900; /* Heavy */ font-size:4em; letter-spacing:1px; line-height:1em; }
-	h3 								{ font-size:2.25em; font-weight:200; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 0.5em; }
+	h3 								{ font-size:2.75em; font-weight:200; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 2em; }
 
 	/* Links */
-	a 								{ border-bottom:1px solid rgba(0,0,0,0.2); color:#333; text-decoration:none; -moz-transition:border-color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out; }
-	a:hover 						{ border-color:#ea2e49; }
+	a 								{ border-bottom:1px solid rgba(0,0,0,0.2); color:#333; text-decoration:none; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
+	nav ul li a 					{ border-bottom:0.1em solid rgba(0,0,0,0.1); border-color: #FCE7AC; color:#2E3C5C;  text-decoration:none; display:inline-block; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
+	nav ul li a:hover 				{ color: #FCE7AC; border-color:#2E3C5C; text-shadow: 1px 1px #999;}
 
 	/* Paragraph styles */
 	p,
@@ -96,7 +97,11 @@ html
 
 body
 {
-	background-color: #6DDBE3;
+	background-color: #FCE7AC;
+	background: -webkit-linear-gradient(left, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #FCE7AC , #ACC1FC, #ACC1FC, #ACC1FC, #2E3C5C); /* Standard syntax */
 	z-index: 1;
 	height:100%;
 	min-height:100%;
@@ -109,12 +114,47 @@ div.logo
 	margin-right: auto;
 	height: 5em; /* originally 5em */
 	width: 5em;
-	visibility: hidden;
+}
+
+div.logo img
+{
+	height: 5em; /* originally 5em */
+	width: 5em;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+	-moz-transition:opacity 0.2s ease-in-out; -ms-transition:opacity 0.2s ease-in-out; -o-transition:opacity 0.2s ease-in-out; -webkit-transition:opacity 0.2s ease-in-out; transition:opacity 0.2s ease-in-out;
+}
+
+div.logo img:hover
+{
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+div.social
+{
+	display:inline-block;
+	background-color: inherit;
+	position:absolute;
+	top:0;
+	right:0;
+	margin-top: 1em;
+	margin-right: 2em;
+	width: 1.5em;
+	height: 1.5em;
+}
+
+div.social img
+{
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
 }
 
 header
 {
-	background-color:#6277BD;
+	background-color:#2E3C5C;
 	width: 100%; /* 27 for h1 */
 	text-align:center;
 	padding-bottom: 3em;
@@ -129,10 +169,10 @@ header h2
 nav
 {
 	display:block;
-	background-color:#D1FCFF;
+	background-color:#ADE4FF;
 	top:0;
 	width:100%;
-	padding: 1em 0;
+	padding: 0 30em;
 }
 
 nav ul
@@ -145,8 +185,9 @@ nav ul
 
 nav ul li
 {
+	font-size:1.25em;
+	white-space: nowrap;
 	display: inline-block;
-	margin: 0 5em;
 }
 
 .stretch {
@@ -159,25 +200,23 @@ nav ul li
 div.page_content
 {
 	display:inline-block;
-	background-color:#648C8F;
-	margin-right:auto;
-	margin-bottom:5em;
-	width:70%;
-	margin-left:30%;
+	background-color:#ACC1FC;
+	width:50%;
+	margin-left:25%;
 	min-height: 100%;
+	margin-bottom:2.5em;
 }
 
 div.page_content p
 {
-	padding: 0.5em 2em;
+	padding: 0.5em 4em;
 }
 
 footer
 {
-	position:fixed;
 	bottom:0;
 	right:0;
-	width:70%;
+	width:100%;
 	height:5em;
 	background-color:#2E3C5C;
 	text-align:right;
@@ -190,5 +229,5 @@ footer p
 	bottom: 1em;
 	right: 0;
 	margin-right:7em;
-	color:#ccc;
+	color:#CCC;
 }
