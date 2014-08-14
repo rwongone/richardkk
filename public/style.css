@@ -77,7 +77,6 @@ ul
 	h3 								{ font-size:2.75em; font-weight:200; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 2em; }
 
 	/* Links */
-	a 								{ border-bottom:1px solid rgba(0,0,0,0.2); color:#333; text-decoration:none; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
 	nav ul li a 					{ border-bottom:0.1em solid rgba(0,0,0,0.1); border-color: #FCE7AC; color:#2E3C5C;  text-decoration:none; display:inline-block; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
 	nav ul li a:hover 				{ color: #FCE7AC; border-color:#2E3C5C; text-shadow: 1px 1px #999;}
 
@@ -103,6 +102,15 @@ body
 	z-index: 0;
 	height: 100%;
 	min-height: 100%;
+}
+
+.home_link
+{
+	position: absolute;
+	top:0;
+	left:0;
+	width:75%;
+	height:100%;
 }
 
 span#background_left
@@ -211,6 +219,8 @@ nav
 
 nav ul
 {
+	margin-left: auto;
+	margin-right: auto;
 	text-align: justify;
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
@@ -219,9 +229,9 @@ nav ul
 
 nav ul li
 {
+	display: inline-block;
 	font-size:1.25em;
 	white-space: nowrap;
-	display: inline-block;
 }
 
 .stretch {
