@@ -5,36 +5,36 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<span id="background"></span>
+	<span id="background_left"></span>
+	<span id="background_right"></span>
 	<header>
 		<div class="logo">
 			<img id="logo" src="dove.jpg"/>
 		</div>
-		<div class="social">
-		<img src="github.png" />
-		<img src="twitter.png" />
-		<img src="linkedin.png" />
-		
-		</div>
+		<section class="social">
+			<img id="github" src="github.png" />
+			<img src="twitter.png" />
+			<img src="linkedin.png" />
+		</section>
 		<h2>Welcome home, boys!</h2>
 	</header>
 	<nav>
-	<ul>
-	<li><a href="/blog">BLOG</a></li> 
-	<li><a href="/projects">PROJECTS</a></li> 
-	<li><a href="/music">MUSIC</a></li> 
-	<li><a href="/reading">READING</a></li>
-	<span class="stretch"></span>
-	</ul>
-
+		<ul>
+			<li><a href="/blog">BLOG</a></li> 
+			<li><a href="/projects">PROJECTS</a></li> 
+			<li><a href="/music">MUSIC</a></li> 
+			<li><a href="/reading">READING</a></li>
+			<span class="stretch"></span>
+		</ul>
 	</nav>
-	<div class="fill"></div>
-	<div class="page_content lift">
+	<span id="blockA"></span>
+	<section class="page_content">
 		<%= yield %>
-	</div>
+	</section>
 
 	<footer>
 		<p>&copy; Nobody 2014</p>
 	</footer>
+	<span id="blockB"></span>
 </body>
 </html>
