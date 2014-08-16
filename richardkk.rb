@@ -1,4 +1,9 @@
 require 'sinatra'
+require 'sinatra/sequel'
+
+configure do
+	DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://database.db')
+end
 
 configure :production do
 	require 'newrelic_rpm'
