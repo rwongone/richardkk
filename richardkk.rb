@@ -11,21 +11,18 @@ class BlogPost
 	property :content, String
 end
 
-class App
+get "/" do
+	erb :index
+end
 
-	get "/" do
-		erb :index
-	end
+get "/projects" do
+	erb :projects
+end
 
-	get "/projects" do
-		erb :projects
-	end
+get "/music" do
+	erb :music
+end
 
-	get "/music" do
-		erb :music
-	end
-
-	get "/reading" do
-		erb :reading
-	end
+get "/reading" do
+	erb :reading
 end
