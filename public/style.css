@@ -61,10 +61,9 @@ ul
 	textarea 						{ color:#000; } 
 
 	/* Families */
-	body							{ font-family:"tablet-gothic", verdana, arial, sans-serif; /* Weights from Typekit: 300, 400 */ }
-	h2,
-	h3 								{ font-family:"tablet-gothic-condensed", "arial narrow", arial, verdana, sans-serif; /* Weights from Typekit: 200, 900 */ }
-
+	body							{ font-family:"Source Sans Pro", verdana, arial, sans-serif; /* Weights from Typekit: 300, 400 */ }
+	h2								{ font-family:"Source Sans Pro", "arial narrow", arial, verdana, sans-serif; /* Weights from Typekit: 200, 900 */ }
+	h3								{ font-family: "Source Sans Pro", sans-serif; }
 	/* Headings */
 	h1,
 	h2,
@@ -74,7 +73,7 @@ ul
 	h6 								{ font-weight:normal; }
 	h1 								{ background:#CC99FF; color:#fff; display:inline-block; margin-bottom:1em; padding:0.5em 1em; }
 	h2 								{ color:#fff; font-weight:900; /* Heavy */ font-size:4em; letter-spacing:1px; line-height:1em; }
-	h3 								{ font-size:2.75em; font-weight:200; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 2em; }
+	h3 								{ font-size:2.75em; font-weight:400; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 2em; }
 
 	/* Links */
 	nav ul li a 					{ border-bottom:0.1em solid rgba(0,0,0,0.1); border-color: #FCE7AC; color:#2E3C5C;  text-decoration:none; display:inline-block; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
