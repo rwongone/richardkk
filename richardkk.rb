@@ -1,17 +1,31 @@
 require 'sinatra'
+require 'data_mapper'
 
-get "/" do
-	erb :index
+DataMapper.setup(:default, "sqlite3:database.sqlite3")
+
+class BlogPost
+	include DataMapper::Resource
+
+	property :id, Serial
+	property :author, String
+	property :content, String
 end
 
-get "/blog" do
-	erb :blog
-end
+class App
 
-get "/music" do
-	erb :music
-end
+	get "/" do
+		erb :index
+	end
 
-get "/reading_list" do
-	erb :reading_list
+	get "/projects" do
+		erb :projects
+	end
+
+	get "/music" do
+		erb :music
+	end
+
+	get "/reading" do
+		erb :reading
+	end
 end
