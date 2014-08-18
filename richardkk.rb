@@ -2,8 +2,6 @@ require 'sinatra'
 require 'sinatra/sequel'
 require 'data_mapper'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
-
 class BlogPost
 	include DataMapper::Resource
 	property :id,			Serial
@@ -15,12 +13,13 @@ end
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
-configure do
-	DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://database.db')
+configure :development do
+    DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
 
 configure :production do
 	require 'newrelic_rpm'
+	DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AQUA_URL'])
 end
 
 get "/" do
