@@ -1,6 +1,14 @@
 require 'sinatra'
-require 'sinatra/sequel'
 require 'data_mapper'
+
+configure :development do
+    DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+end
+
+configure :production do
+	require 'newrelic_rpm'
+	DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AQUA_URL'])
+end
 
 class BlogPost
 	include DataMapper::Resource
@@ -12,15 +20,6 @@ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-
-configure :development do
-    DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
-end
-
-configure :production do
-	require 'newrelic_rpm'
-	DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AQUA_URL'])
-end
 
 get "/" do
 	@blog_posts = BlogPost.all

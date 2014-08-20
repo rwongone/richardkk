@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 gem 'sinatra'
+gem 'data_mapper'
 gem 'newrelic_rpm'
-gem 'sinatra-sequel'
 gem 'padrino'
 
 group :production do
@@ -12,7 +12,7 @@ group :production do
     gem "dm-postgres-adapter"
 end
 
-group :development, :test do
+group :development do
     gem "sqlite3"
     gem "dm-sqlite-adapter"
 end
