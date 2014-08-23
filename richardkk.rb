@@ -2,6 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 
 configure :development do
+	puts Dir.pwd.to_s
     DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
 

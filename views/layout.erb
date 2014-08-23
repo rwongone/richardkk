@@ -5,12 +5,14 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="icon" type="image/jpg" href="dove.jpg">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="/scripts/script.js"></script>
 </head>
 <body>
 	<span id="background_left"></span>
 	<span id="background_right"></span>
 	<header>
-		<a class="home_link" href="#"><span class="home_link"></span></a>
+		<a class="home_link" href="/"><span class="home_link"></span></a>
 		<div class="logo">
 			<img id="logo" src="dove.jpg"/>
 		</div>
@@ -29,8 +31,9 @@
 			<span class="stretch"></span>
 		</ul>
 	</nav>
+	<span id="top_shift"></span>
 	<span id="blockA"></span>
-	<section class="page_content">
+	<section id="page_content">
 		<%= yield %>
 	</section>
 
