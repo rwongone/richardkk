@@ -5,7 +5,6 @@ ruby '2.1.0'
 gem 'sinatra'
 gem 'data_mapper'
 gem 'newrelic_rpm'
-gem 'padrino'
 
 group :production do
     gem "pg"
