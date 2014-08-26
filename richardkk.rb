@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require_relative 'wikicrawl'
 
 configure :development do
     DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
@@ -18,7 +19,7 @@ class BlogPost
 	property :content,		String, :required => true
 end
 
-class WikiResult
+class WikiAttempt
 	include DataMapper::Resource
 	property :id,			Serial
 	property :title,		String, :required => true
@@ -58,17 +59,20 @@ get "/reading" do
 	erb :reading
 end
 
-get "/wiki_phil/new" do
+get "/wiki_phil" do
 	erb :new_wiki_phil
 end
 
-get "/wiki_phil" do
-	@results = WikiResult.all
+get "/wiki_phil/:query" do |query|
+	@query = query.tr("_", " ")
+	@results = foreal(query.to_s, []);
 	erb :wiki_phil
 end
 
 post "/wiki_phil" do
-	@start_page = params[:start_page]
-	@ends_w_phil = params[:ends_w_phil]
-	redirect to ("wiki_phil")
+	redirect to ("wiki_phil/#{params[:query].tr(" ", "_")}")
+end
+
+post "/wiki_phil/:query" do
+	redirect to ("wiki_phil/#{params[:query].tr(" ", "_")}")
 end

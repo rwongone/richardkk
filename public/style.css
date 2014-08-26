@@ -81,7 +81,7 @@ ul
 
 	/* Paragraph styles */
 	p,
-	li 								{ font-size:1em; font-weight:400; /* Regular */ line-height:1.5em; padding:0.5em 0; }
+	li 								{ font-size:1em; font-weight:400; /* Regular */ line-height:1.5em; }
 
 	/* Other bits & bobs */
 	em,
@@ -256,6 +256,7 @@ nav ul li
 	display: inline-block;
 	font-size:1.25em;
 	white-space: nowrap;
+	padding:0.5em 0;
 }
 
 .stretch {
@@ -307,7 +308,7 @@ span#blockB
 	z-index: 9;
 }
 
-#page_content p
+#page_content p,ol
 {
 	padding: 0.5em 4em 1em 4em;
 }

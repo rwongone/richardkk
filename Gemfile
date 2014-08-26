@@ -5,6 +5,7 @@ ruby '2.1.0'
 gem 'sinatra'
 gem 'data_mapper'
 gem 'newrelic_rpm'
+gem 'wikipedia-client'
 
 group :production do
     gem "pg"
