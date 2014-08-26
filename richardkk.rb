@@ -65,7 +65,7 @@ end
 
 get "/wiki_phil/:query" do |query|
 	@query = query.tr("_", " ")
-	@results = foreal(query.to_s, []);
+	@results = foreal(@query.to_s, []);
 	erb :wiki_phil
 end
 

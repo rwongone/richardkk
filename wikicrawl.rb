@@ -3,10 +3,9 @@ require 'wikipedia'
 def foreal(query, visited)
 	puts query
 	result = Wikipedia.find(query)
-	content = result.content
-	puts content
-	title = result.title
 
+	content = result.content
+	title = result.title
 	if (title == "Philosophy")
 		visited.push("You did it!")
 		return visited
@@ -21,13 +20,14 @@ def foreal(query, visited)
 		return visited
 	end
 
+	content = content[content.index(/[']{3}/), content.length - content.index(/[']{3}/)].gsub(/\(.*?\)/, '').gsub(/<ref>\s*.*\s*<\/ref>/, '')
+
+	puts content
+
 	link = content.match(/[^']{0,2}\[\[([\w ]*)[|]?[\w ]*\]\][^']{0,2}/)
-
-	puts link
-
 	actual_link = link.to_s.scan(/\[\[([\w ]*)[|]?[\w ]*\]\]/)
 
-	puts actual_link
+	puts "*", link, "*", actual_link, "*"
 
 	foreal(actual_link, visited)
 end
