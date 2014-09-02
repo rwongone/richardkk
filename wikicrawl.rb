@@ -20,12 +20,11 @@ def foreal(query, visited)
 		return visited
 	end
 
+	# needs to replace round bracket contents ONLY IF they are not enclosed in square brackets
 	content = content[content.index(/[']{3}/), content.length - content.index(/[']{3}/)].gsub(/\(.*?\)/, '').gsub(/<ref>\s*.*\s*<\/ref>/, '')
 
-	puts content
-
-	link = content.match(/[^']{0,2}\[\[([\w ]*)[|]?[\w ]*\]\][^']{0,2}/)
-	actual_link = link.to_s.scan(/\[\[([\w ]*)[|]?[\w ]*\]\]/)
+	link = content.match(/[^']{2}\[\[([\w |\(\)]*)[\w ]*\]\][^']{2}/)
+	actual_link = link.to_s.scan(/\[\[([\w ()]*)[|]?[\w ()]*\]\]/)[0][0].to_s
 
 	puts "*", link, "*", actual_link, "*"
 
