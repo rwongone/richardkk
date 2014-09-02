@@ -72,12 +72,12 @@ ul
 	h5,
 	h6 								{ font-weight:normal; }
 	h1 								{ background:#CC99FF; color:#fff; display:inline-block; margin-bottom:1em; padding:0.5em 1em; }
-	h2 								{ color:#fff; font-weight:900; /* Heavy */ font-size:4em; letter-spacing:1px; line-height:1em; }
+	h2 								{ color:#fff; font-weight:400; /* Heavy */ font-size:4em; letter-spacing:1px; line-height:1em; }
 	h3 								{ font-size:2.75em; font-weight:400; /* Thin */ letter-spacing:1px; line-height:1em; padding:0.5em 0 0.25em 2em; }
 
 	/* Links */
-	nav ul li a 					{ border-bottom:0.1em solid rgba(0,0,0,0.1); border-color: #FCE7AC; color:#2E3C5C;  text-decoration:none; display:inline-block; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
-	nav ul li a:hover 				{ color: #FCE7AC; border-color:#2E3C5C; text-shadow: 1px 1px #999;}
+	nav ul li a 					{ border-bottom:0.1em solid rgba(0,0,0,0.1); border-color: #5CA2FF; color:#2E3C5C;  text-decoration:none; display:inline-block; -moz-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -ms-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -o-transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out; -webkit-transition:border-color 0.2s ease-in-out; transition:border-color 0.2s ease-in-out, color 0.2s ease-in-out;}
+	nav ul li a:hover 				{ color: #5CA2FF; border-color:#2E3C5C; text-shadow: 1px 1px #999;}
 
 	/* Paragraph styles */
 	p,
@@ -271,7 +271,7 @@ span#blockA
 	position: absolute;
 	top:0;
 	left:10%;
-	background-color: #EAFFD6;
+	background-color: #D9DEE7;
 	width: 18%;
 	height: 80%;
 	z-index: 1;
@@ -285,7 +285,7 @@ span#blockB
 	position: fixed;
 	bottom:0em;
 	right:0;
-	background-color: #EBD6FF;
+	background-color: #E7E2D9;
 	width: 50%;
 	height: 20%;
 	z-index: 0;
