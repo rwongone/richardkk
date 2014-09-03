@@ -16,6 +16,7 @@ class BlogPost
 	property :title,		String, :required => true
 	property :content,		String, :required => true
 end
+
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
