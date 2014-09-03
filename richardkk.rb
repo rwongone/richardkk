@@ -14,7 +14,6 @@ class BlogPost
 	include DataMapper::Resource
 	property :id,			Serial
 	property :title,		String, :required => true
-	property :date_time,	DateTime, :required => true
 	property :content,		String, :required => true
 end
 DataMapper.finalize
