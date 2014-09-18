@@ -16,7 +16,9 @@ class WordPair
   property :next,     String, :key => true
   property :frequency,  Integer,:default => 1
   property :starter,    Boolean,:default => false
-  property :punctuation,  Boolean,:default => false
+  property :nextIsStarter, Boolean,:default => false
+  property :punctuation, Boolean,:default => false
+  property :ender, Boolean, :default => false
 end
 
 DataMapper.finalize
@@ -47,14 +49,20 @@ class Sentinences
     parsed = f.split(/[\s]+/)
     currentWord = nil
     nextWord = nil
-    punct = false
 
     parsed.each do |word|
+      nextIsStarter = false
       punct = false
+      ender = false
       nextWord = word[/[\w][\w’'-`]*[\w]|[\w]/]
-      if (nextWord == nil)
+      if nextWord == nil
         nextWord = word[/[.,:;!?]/]
         punct = true
+        if /[.!?]/.match(nextWord)
+          ender = true
+        end
+      elsif /^[A-Z]/.match(nextWord)
+        nextIsStarter = true
       end
 
       if (currentWord != nil) # not the first word 
@@ -62,7 +70,7 @@ class Sentinences
         if (nextWord != nil)
           dbPair = WordPair.get(currentWord, nextWord)
           if (dbPair == nil) # this pair is new
-            dbPair = WordPair.create(:current => currentWord, :next => nextWord, :starter => starter, :punctuation => punct)
+            dbPair = WordPair.create(:current => currentWord, :next => nextWord, :starter => starter, :punctuation => punct, :nextIsStarter => nextIsStarter, :ender => ender)
           else # we have this pair stored
             newFreq = dbPair.frequency + 1
             dbPair.update(:frequency => newFreq)
@@ -77,16 +85,19 @@ class Sentinences
     pairs = WordPair.all
     
     # query for a start word
-    candidates = WordPair.all(:starter => true)
+    candidates = WordPair.all(:starter => true, :punctuation => false, :nextIsStarter => false)
     n = 0
-    ohGod = 0
-    min = 10
-    max = 100
+    min = 1
+    max = 32
     doc = []
     word = nil
 
     # up to MIN times, choose links
     loop do
+      if n > 0
+
+      end
+
       rouletteTotal = 0
 
       candidates.each do |c|
@@ -102,27 +113,29 @@ class Sentinences
         else
           word = c
           doc.push(word.current)
-          puts word.current
           n += 1
-          break;
+          break
         end
       end
 
-      if (n < min)
-        candidates = WordPair.all(:current => word.next).all(:punctuation => false)
-      else 
-        candidates = WordPair.all(:current => word.next)
-      end
+      candidates = WordPair.all(:current => word.next, :nextIsStarter => false)
+      puts word.current + " " + word.next + " " + candidates.length.to_s
 
-      # after MIN times, take first word with punctuation which is not "," or ";" and end the sentence
-      if n > min && word.punctuation && !word.next[/[,;]/] || !candidates
-        doc.push(word.next)
-        break;
-      elsif n > max || ohGod > 10 * max
-        doc.push("...")
-        break;
+      if n >= max
+        tempCandidates = candidates.all(:ender => true)
+        if tempCandidates.length != 0
+          candidates = tempCandidates
+        end
       end
-      ohGod += 1
+      
+      if n > min && word.ender
+        doc.push(word.next)
+        break
+      elsif candidates.length == 0
+        doc.push("...")
+        puts "... " + n.to_s
+        break
+      end
     end
 
     sentence = ""

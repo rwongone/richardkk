@@ -45,6 +45,8 @@ end
 get "/projects/sentinences/:sourceFile" do
 	s = Sentinences.new
 	s.process(params[:sourceFile])
+
+	redirect to ("/projects/sentinences")
 end
 
 get "/projects/sentinences" do
