@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require './sentinences'
 
 configure :development do
     DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
@@ -34,12 +35,18 @@ end
 
 get "/" do
 	@blog_posts = BlogPost.all
-	puts params
 	erb :index
 end
 
 get "/projects" do
 	erb :projects
+end
+
+get "/projects/sentinences" do
+	s = Sentinences.new
+	@sentence = s.buildSentence
+
+	erb :sentinences
 end
 
 get "/music" do

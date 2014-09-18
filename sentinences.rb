@@ -84,8 +84,8 @@ class Sentinences
     max = 100
     doc = []
     word = nil
-    # do
 
+    # up to MIN times, choose links
     loop do
       rouletteTotal = 0
 
@@ -93,6 +93,7 @@ class Sentinences
         rouletteTotal += c.frequency
       end
 
+      # roulette for next link
       r = rand(rouletteTotal)
 
       candidates.each do |c|
@@ -113,6 +114,7 @@ class Sentinences
         candidates = WordPair.all(:current => word.next)
       end
 
+      # after MIN times, take first word with punctuation which is not "," or ";" and end the sentence
       if n > min && word.punctuation && !word.next[/[,;]/] || !candidates
         doc.push(word.next)
         break;
@@ -132,12 +134,6 @@ class Sentinences
       end
     end
 
-    # up to MIN times, choose links
-
-    # roulette for next link
-
-    # after MIN times, take first word with punctuation which is not "," or ";" and end the sentence
-
-
+    return sentence
   end
 end
