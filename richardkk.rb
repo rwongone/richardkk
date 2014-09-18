@@ -42,16 +42,16 @@ get "/projects" do
 	erb :projects
 end
 
+get "/projects/sentinences/:sourceFile" do
+	s = Sentinences.new
+	s.process(params[:sourceFile])
+end
+
 get "/projects/sentinences" do
 	s = Sentinences.new
 	@sentence = s.buildSentence
 
 	erb :sentinences
-end
-
-get "/projects/sentinences/:sourceFile" do
-	s = Sentinences.new
-	s.process(params[:sourceFile])
 end
 
 get "/music" do
