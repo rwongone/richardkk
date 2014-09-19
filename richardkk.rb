@@ -1,40 +1,8 @@
 require 'sinatra'
 require 'data_mapper'
-require './sentinences'
-
-configure :development do
-    DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
-end
-
-configure :production do
-	require 'newrelic_rpm'
-	DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_AQUA_URL'])
-end
-
-class BlogPost
-	include DataMapper::Resource
-	property :id,			Serial
-	property :title,		String, :required => true
-	property :content,		String, :required => true
-end
-
-DataMapper.finalize
-DataMapper.auto_upgrade!
-
-def simple_article(title, content)
-	return markup("article", markup("h3", title) + markup("p", content))
-end
-
-def article(title, timestamp, content)
-	return markup("article", markup("h3", title) + markup("h4", timestamp) + markup("p", content))
-end
-
-def markup(tag, content)
-	return "<"+tag+">"+content+"</"+tag+">"
-end
+require './sentinence'
 
 get "/" do
-	@blog_posts = BlogPost.all
 	erb :index
 end
 
@@ -42,24 +10,16 @@ get "/projects" do
 	erb :projects
 end
 
-get "/projects/sentinences/:sourceFile" do
-	s = Sentinences.new
+get "/projects/sentinence/:sourceFile" do
+	s = Sentinence.new
 	s.process(params[:sourceFile])
 
-	redirect to ("/projects/sentinences")
+	redirect to ("/projects/sentinence")
 end
 
-get "/projects/sentinences" do
-	s = Sentinences.new
+get "/projects/sentinence" do
+	s = Sentinence.new
 	@sentence = s.buildSentence
 
 	erb :sentinences
-end
-
-get "/music" do
-	erb :music
-end
-
-get "/reading" do
-	erb :reading
 end

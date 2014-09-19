@@ -2,7 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 
 configure :development do
-    DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
 
 configure :production do
@@ -17,14 +17,13 @@ class WordPair
   property :frequency,  Integer,:default => 1
   property :starter,    Boolean,:default => false
   property :nextIsStarter, Boolean,:default => false
-  property :punctuation, Boolean,:default => false
   property :ender, Boolean, :default => false
 end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
-class Sentinences
+class Sentinence
   def preprocess(f)
     punctuation = [".", ",", ":", ";", "!", "?", "—"]
     punctuation.each do |p|
@@ -52,12 +51,10 @@ class Sentinences
 
     parsed.each do |word|
       nextIsStarter = false
-      punct = false
       ender = false
       nextWord = word[/[\w][\w’'-`]*[\w]|[\w]/]
       if nextWord == nil
         nextWord = word[/[.,:;!?]/]
-        punct = true
         if /[.!?]/.match(nextWord)
           ender = true
         end
@@ -70,7 +67,7 @@ class Sentinences
         if (nextWord != nil)
           dbPair = WordPair.get(currentWord, nextWord)
           if (dbPair == nil) # this pair is new
-            dbPair = WordPair.create(:current => currentWord, :next => nextWord, :starter => starter, :punctuation => punct, :nextIsStarter => nextIsStarter, :ender => ender)
+            dbPair = WordPair.create(:current => currentWord, :next => nextWord, :starter => starter, :nextIsStarter => nextIsStarter, :ender => ender)
           else # we have this pair stored
             newFreq = dbPair.frequency + 1
             dbPair.update(:frequency => newFreq)
@@ -85,7 +82,7 @@ class Sentinences
     pairs = WordPair.all
     
     # query for a start word
-    candidates = WordPair.all(:starter => true, :punctuation => false, :nextIsStarter => false)
+    candidates = WordPair.all(:starter => true, :ender => false, :nextIsStarter => false)
     n = 0
     min = 1
     max = 32
@@ -119,7 +116,7 @@ class Sentinences
       end
 
       candidates = WordPair.all(:current => word.next, :nextIsStarter => false)
-      puts word.current + " " + word.next + " " + candidates.length.to_s
+      puts word.current + " " + word.next
 
       if n >= max
         tempCandidates = candidates.all(:ender => true)
@@ -127,7 +124,7 @@ class Sentinences
           candidates = tempCandidates
         end
       end
-      
+
       if n > min && word.ender
         doc.push(word.next)
         break

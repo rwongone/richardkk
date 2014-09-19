@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>Richard Wong</title>
-<link rel="stylesheet" type="text/css" href="/style.css">
-<link rel="icon" type="image/jpg" href="/dove.jpg">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="icon" type="image/jpg" href="/img/dove.jpg">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin' rel='stylesheet' type='text/css'>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <script src="/scripts/script.js"></script>
@@ -13,27 +13,23 @@
 	<span id="background_left"></span>
 	<span id="background_right"></span>
 	<header>
-		<a class="home_link" href="/"></a>
-		<div class="logo">
-			<img id="logo" src="/dove.jpg"/>
-		</div>
 		<section class="social">
-			<a href="https://www.github.com/rwongone" title="Visit my GitHub!"><img id="github" src="/github.png" /></a>
-			<a href="https://www.twitter.com/rk2wong" title="Follow me on Twitter!"><img src="/twitter.png" /></a>
-			<a href="https://www.linkedin.com/in/richardkakitwong" title="Connect with me on LinkedIn!"><img src="/linkedin.png" /></a>
+			<a href="https://www.github.com/rwongone" title="Visit my GitHub!"><img id="github" src="/img/github.png" /></a>
+			<a href="https://www.twitter.com/rk2wong" title="Follow me on Twitter!"><img src="/img/twitter.png" /></a>
+			<a href="https://www.linkedin.com/in/richardkakitwong" title="Connect with me on LinkedIn!"><img src="/img/linkedin.png" /></a>
 		</section>
 		<h2>Richard KK Wong</h2>
 	</header>
 	<nav>
 		<ul>
-			<li><a href="/projects" title="What have I been working on?">PROJECTS</a></li> 
-			<li><a href="/music" title="Broaden your musical horizons!">MUSIC</a></li> 
-			<li><a href="/reading" title="See some reading recommendations!">READING</a></li>
+			<li><a href="/" title="Take me home!">HOME</a></li> 
+			<li><a href="/projects" title="What have I been working on?">PROJECTS</a></li>
+			<li><a href="/pdf/resume.pdf" title="Who am I?">RESUME</a></li>
 			<span class="stretch"></span>
 		</ul>
 	</nav>
 	<span id="top_shift"></span>
-	<span id="blockA"></span>
+	<span id="blockA"><img id="me" src="/img/me.jpg" /></span>
 	<section id="page_content">
 		<%= yield %>
 	</section>
