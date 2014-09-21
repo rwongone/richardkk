@@ -274,9 +274,10 @@ span#blockA
 img#me {
 	position: absolute;
 	top: 14em;
-	left: 2em;
+	left: 10%;
 	border: 1em #2E3C5C;
 	border-radius: 2em;
+	width: 70%;
 }
 
 span#blockB
